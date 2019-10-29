@@ -24,14 +24,14 @@ from scipy.stats import skew
 print("Enter Song Name:")
 
 inputSong_name = input()
-inputSong_path = "./DATA/FadsoMusicDemos/"
+inputSong_path = "../DATA/MusicDemos/"
 input_song = inputSong_path + inputSong_name + ".wav"
 exported_song = input_song[23:4]
-inputPickle_path = "./DATA/DEMO_SONGS/"
+inputPickle_path = "../DATA/DEMO_SONGS/"
 
 TEST = inputPickle_path + exported_song + ".pkl"
-TRAIN = "./DATA.Model_Features_Dataset.pkl"
-MODEL = "./DATA/MODELS/NeuralNetworks_Model.h5"
+TRAIN = "../DATA/PICKLES/Final_SongFeatures_Dataset.pkl"
+MODEL = "../DATA/MODELS/NeuralNetworks_Model.h5"
 
 
 genres = {0: 'Blues', 1: 'Classical', 2: 'Country', 3: 'Disco', 4: 'Hiphop',
@@ -39,16 +39,14 @@ genres = {0: 'Blues', 1: 'Classical', 2: 'Country', 3: 'Disco', 4: 'Hiphop',
 
 
 
-def import_song(input_song, sr = 44100, n_fft = 1024, hop_length = 512):
-    
-    
+def import_song(input_song, sr = 44100, n_fft = 1024, hop_length = 512):  
              
     # import song
     filename = input_song
     y, sr = librosa.load(filename)
     
     # create directory to save all graphs
-    dirName = "GRAPHS_FOR_{}".format(inputSong_name)
+    dirName = "../GRAPHS/GRAPHS_FOR_{}".format(inputSong_name)
     
     try:
     # Create target Directory
@@ -78,7 +76,7 @@ def import_song(input_song, sr = 44100, n_fft = 1024, hop_length = 512):
 
     librosa.display.waveplot(y, sr=sr)
     plt.title('Mono');
-    plt.savefig('./GRAPHS_FOR_{}/Audiowave.png'.format(inputSong_name))
+    plt.savefig(dirName + '/Audiowave.png')
     
     ## DISPLAY HARMONIC + PERCUSSIVE (MONO)
     
@@ -87,7 +85,7 @@ def import_song(input_song, sr = 44100, n_fft = 1024, hop_length = 512):
     librosa.display.waveplot(y_harm, sr=sr, alpha=0.35)
     librosa.display.waveplot(y_perc, sr=sr, color='r', alpha=0.25)
     plt.title('Harmonic + Percussive')
-    plt.savefig('./GRAPHS_FOR_{}/Harmonic_Percussive_AudioWave.png'.format(inputSong_name))
+    plt.savefig(dirName + '/Harmonic_Percussive_AudioWave.png')
 
     
     #Plot mfcc (normalized)
@@ -101,7 +99,7 @@ def import_song(input_song, sr = 44100, n_fft = 1024, hop_length = 512):
                           fmax=8000)
     plt.colorbar(format='%+2.0f dB')
     plt.title('Mel-frequency spectrogram')
-    plt.savefig('./GRAPHS_FOR_{}/Mel-Spectrogram.png'.format(inputSong_name))
+    plt.savefig(dirName + '/Mel-Spectrogram.png')
 
     
     mfcc = librosa.feature.mfcc(S = S_dB, n_mfcc= 15, n_fft=n_fft, hop_length=hop_length)
@@ -109,7 +107,7 @@ def import_song(input_song, sr = 44100, n_fft = 1024, hop_length = 512):
 
     plt.figure(figsize=(22, 6))
     librosa.display.specshow(mfcc_nzd, sr=sr, x_axis='time');
-    plt.savefig('./GRAPHS_FOR_{}/MFCC(Normalized).png'.format(inputSong_name))
+    plt.savefig(dirName + '/MFCC(Normalized).png')
 
     
     # Plot Chromagrams
@@ -121,13 +119,13 @@ def import_song(input_song, sr = 44100, n_fft = 1024, hop_length = 512):
     librosa.display.specshow(chroma_stft, y_axis='chroma', x_axis='time')
     plt.title('chroma_stft')
     plt.colorbar()
-    plt.savefig('./GRAPHS_FOR_{}/Chroma(STFT).png'.format(inputSong_name))
+    plt.savefig(dirName + '/Chroma(STFT).png')
 
     plt.figure(figsize=(22,6))
     librosa.display.specshow(chroma_cqt, y_axis='chroma', x_axis='time')
     plt.title('chroma_cqt')
     plt.colorbar()
-    plt.savefig('./GRAPHS_FOR_{}/Chroma(CQT).png'.format(inputSong_name))
+    plt.savefig(dirName + '/Chroma(CQT).png')
 
 
 
@@ -200,11 +198,6 @@ def create_finalDf(primaryDf, sr = 44100 , n_fft = 1024, hop_length = 512):
         data_kurt = kurtosis(primaryDf[column].loc[0])
         data_skew = skew(primaryDf[column].loc[0])
 
-        #mean_lst.append(data_mean)
-        #std_lst.append(data_std)
-        #kurt_lst.append(data_kurt)
-        #skew_lst.append(data_skew)
-
         primaryDf['{}_Mean'.format(column)] = data_mean
         primaryDf['{}_Std'.format(column)] = data_std
         primaryDf['{}_Kurt'.format(column)] = data_kurt
@@ -212,13 +205,11 @@ def create_finalDf(primaryDf, sr = 44100 , n_fft = 1024, hop_length = 512):
 
     finalDf = primaryDf.drop(columns = useless_cols)
 
-    exportedSong_pickle = finalDf.to_pickle("./DATA/DEMO_SONGS/{}.pkl".format(exported_song))
+    exportedSong_pickle = finalDf.to_pickle("../DATA/DEMO_SONGS/{}.pkl".format(exported_song))
 
 
 def model_load(MODEL, show=False):
-    """
-    Load previously trained model
-    """
+ 
     modelo = load_model(MODEL)
     if show:
         print(modelo.summary())
@@ -227,9 +218,7 @@ def model_load(MODEL, show=False):
 
 
 def normalize(TEST):
-    """
-    Normalize test data for prediction
-    """
+
     # Training data:
     data = pd.read_pickle(TRAIN)
     X = data.drop('Genres', axis=1)
@@ -246,9 +235,6 @@ def normalize(TEST):
 
 def predict(modelo, Xt):
 
-    """
-    Predicts labels for each song
-    """
     preds = modelo.predict_classes(Xt)
     predicted = genres.get(preds[0])
     probs = modelo.predict(Xt)[0] 
@@ -278,15 +264,12 @@ def predict(modelo, Xt):
 
 def present_results(preds, probs):
 
-    """
-    Present results of prediction
-    """
     plt.figure(figsize=(10,10))
     plt.title(f'Predicted genre: {preds}')
     plt.bar(genres.values(), probs, color='r')
     for j in range(len(probs)):
         plt.text(x=j - 0.1, y=probs[j], s='{:.2f} %'.format((probs[j]) * 100), size=10)
-    plt.savefig('./GRAPHS_FOR_{}/Predicted_Genre.png'.format(inputSong_name))
+    plt.savefig('../GRAPHS/GRAPHS_FOR_{}/Predicted_Genre.png'.format(inputSong_name))
     #plt.show()
 
-    print("Your Results Are In The {} Directory".format(inputSong_name))
+    print("Your Results Are In The GRAPHS/{} Directory".format(inputSong_name))
