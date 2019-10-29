@@ -22,13 +22,13 @@ Audio feature extraction script for song decomposition
 - Chromagram stft
 - Genre Percentage
 
-## You input a song and it returns a folder with all the info and features of the song 
+## Input A Song And Retrieve All Of It´s Features Hassle Free
 
-By using Machine Learning (Neural Networks) and Librosa, I was able to decompose a song in order to return the raw features that make up that song as well as the percentages of each genre in that song.
+By using Machine Learning (Neural Networks) I was able to decompose a song in order to return the raw features that make up that song as well as the percentages of each genre in that song.
 
 Using Keras and Tensorflow I have trained a model to predict a song´s genre with over a 90% accuracy.
 
-## Files and Directories in Github Repo
+## Files And Directories In Github Repo
 
 -> DEMO_PIPELINE Folder:
 
