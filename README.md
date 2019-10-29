@@ -65,6 +65,7 @@ This notebook contains the fully functional demo of the project. It returns a di
 You will need to create a DATA directory in your Project directory with the following subdirectories: 
 
 * IMPORTANT - The directory names must be exactly the same in order for the code to work!
+* Link To Initial Dataset : http://opihi.cs.uvic.ca/sound/genres.tar.gz.
 
 - genres -> Contains the initial dataset 
 - SongSplits -> Contains the full dataset after manipulation
