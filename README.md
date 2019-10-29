@@ -10,6 +10,7 @@ Audio feature extraction script for song decomposition
 - Tempo
 - Duration of song
 - Key
+- Chosen Song Name
 
 -> Graphs Returned:
 
@@ -19,36 +20,47 @@ Audio feature extraction script for song decomposition
 - Mel-Spectrogram
 - Chromagram cqt
 - Chromagram stft
+- Genre Percentage
 
-## You input a song and it returns a folder with all the info and features of the song and a little audio player 
+## You input a song and it returns a folder with all the info and features of the song 
 
-By using Machine Learning to predict the genre of the song and extracting the rest of the features using Librosa,
-I was able to decompose a song to return the raw features that make up that song.
+By using Machine Learning (Neural Networks) and Librosa, I was able to decompose a song in order to return the raw features that make up that song as well as the percentages of each genre in that song.
 
-Using Keras and Tensorflow I have trained a neural network to predict a song´s genre with a 90% accuracy.
+Using Keras and Tensorflow I have trained a model to predict a song´s genre with over a 90% accuracy.
 
 ## Files and Directories in Github Repo
 
+--> DEMO_PIPELINE Folder:
+
 -- Demo.py
 
-In the demo.py file you can see the full functioning code for demoing the script using a song in your system.
+In the demo.py file you can see the full functioning code you can use to demo a song in your DATA directory.
 
 -- Main.py
 
-In the Main.py file ...
+In the Main.py file you can find the final pipeline with which you can demo the script from the terminal.
 
--- Feature_Extraction.py
+--> JUPYTER_NOTEBOOKS Folder:
 
-In the feature_Extraction.py file you ca see the full code for the manipulation and return of a fully functional
-dataset from a directory of audio files (another dataset) if you want to train the model using a different set of 
-data.
+In the jupyter notebook folder you can find the jupyter notebooks for the full and uncut proccesses of feature extraction, data manipulation, dataset acquisition and model training.
 
--- Jupyter Notebooks
+-- Dataset Creation And Wrangling:
 
-In the jupyter notebook files you can see the proccess of feature extraction and dataframe manipulation for training the model and
-setting the dataset.
+Full proccess for data acquisition and manipulation. In this notebook you can see how the original dataset was nourished by splitting each song into 10 chunks. The chunks are then stored in your /DATA/SongSplits directory.
 
--- DATA
+-- Create Final DataFrame Pickle:
+
+In this notebook you can see a step by step construcction of the final dataframe used as the main data for the project. At the end the dataframe is exported as a pickle to your DATA/PICKLES directory for easy and quick use as the dataframe takes about 40 minutes to be created.
+
+-- Training Neural Networks Model:
+
+Contains a simple step-by-step of the construction of the model using Keras and Tensorflow. The model is the exported to your /DATA/MODELS directory as a .h5 file.
+
+-- Demo:
+
+This notebook contains the fully functional demo of the project. It returns a directory in your DATA/GRAPHS directory with all the graphs and information. It also gives you an audio player for song review.
+
+* DATA
 
 In the DATA directory you will find two subdirectories:
 
