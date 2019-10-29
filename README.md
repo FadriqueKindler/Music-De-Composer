@@ -63,7 +63,8 @@ This notebook contains the fully functional demo of the project. It returns a di
 -> DATA
 
 You will need to create a DATA directory in your Project directory with the following subdirectories: 
-*(The directory names must be exactly the same in order for the code to work!)
+
+* IMPORTANT - The directory names must be exactly the same in order for the code to work!
 
 - genres -> Contains the initial dataset 
 - SongSplits -> Contains the full dataset after manipulation
