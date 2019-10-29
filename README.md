@@ -30,7 +30,7 @@ Using Keras and Tensorflow I have trained a model to predict a song´s genre wit
 
 ## Files and Directories in Github Repo
 
-* DEMO_PIPELINE Folder:
+-> DEMO_PIPELINE Folder:
 
 - Demo.py
 
@@ -40,7 +40,7 @@ In the demo.py file you can see the full functioning code you can use to demo a 
 
 In the Main.py file you can find the final pipeline with which you can demo the script from the terminal.
 
-* JUPYTER_NOTEBOOKS Folder:
+-> JUPYTER_NOTEBOOKS Folder:
 
 In the jupyter notebook folder you can find the jupyter notebooks for the full and uncut proccesses of feature extraction, data manipulation, dataset acquisition and model training.
 
@@ -60,7 +60,7 @@ Contains a simple step-by-step of the construction of the model using Keras and 
 
 This notebook contains the fully functional demo of the project. It returns a directory in your DATA/GRAPHS directory with all the graphs and information. It also gives you an audio player for song review.
 
-* DATA
+-> DATA
 
 You will need to create a DATA directory with the following directories: 
 (The directory names must be exactly the same in order for the code to work!)
