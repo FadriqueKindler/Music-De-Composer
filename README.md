@@ -74,3 +74,7 @@ You will need to create a DATA directory in your Project directory with the foll
 - MusicDemos -> Contains the demos used to test the jupyter notebooks and demo.py
 - GRAPHS -> Contains the returned graphs for your songs
 
+## Next Steps:
+
+- TKinter GUI
+- Interactive Audio Player
