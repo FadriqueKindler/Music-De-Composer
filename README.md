@@ -4,7 +4,7 @@
 
 Audio feature extraction script for song decomposition
 
--> Features Returned:
+-> Features Returned:                
 
 - Genre
 - Tempo
@@ -30,39 +30,45 @@ Using Keras and Tensorflow I have trained a model to predict a song´s genre wit
 
 ## Files and Directories in Github Repo
 
---> DEMO_PIPELINE Folder:
+* DEMO_PIPELINE Folder:
 
--- Demo.py
+- Demo.py
 
 In the demo.py file you can see the full functioning code you can use to demo a song in your DATA directory.
 
--- Main.py
+- Main.py
 
 In the Main.py file you can find the final pipeline with which you can demo the script from the terminal.
 
---> JUPYTER_NOTEBOOKS Folder:
+* JUPYTER_NOTEBOOKS Folder:
 
 In the jupyter notebook folder you can find the jupyter notebooks for the full and uncut proccesses of feature extraction, data manipulation, dataset acquisition and model training.
 
--- Dataset Creation And Wrangling:
+- Dataset Creation And Wrangling:
 
 Full proccess for data acquisition and manipulation. In this notebook you can see how the original dataset was nourished by splitting each song into 10 chunks. The chunks are then stored in your /DATA/SongSplits directory.
 
--- Create Final DataFrame Pickle:
+- Create Final DataFrame Pickle:
 
 In this notebook you can see a step by step construcction of the final dataframe used as the main data for the project. At the end the dataframe is exported as a pickle to your DATA/PICKLES directory for easy and quick use as the dataframe takes about 40 minutes to be created.
 
--- Training Neural Networks Model:
+- Training Neural Networks Model:
 
 Contains a simple step-by-step of the construction of the model using Keras and Tensorflow. The model is the exported to your /DATA/MODELS directory as a .h5 file.
 
--- Demo:
+- Demo:
 
 This notebook contains the fully functional demo of the project. It returns a directory in your DATA/GRAPHS directory with all the graphs and information. It also gives you an audio player for song review.
 
 * DATA
 
-In the DATA directory you will find two subdirectories:
+You will need to create a DATA directory with the following directories: 
+(The directory names must be exactly the same in order for the code to work!)
 
-- genres -> Contains the initial dataset used to train the model
-- FadsoMusicDemos -> Contains the demos used to test the jupyter notebooks and demo.py
+- genres -> Contains the initial dataset 
+- SongSplits -> Contains the full dataset after manipulation
+- PICKLES -> Contains the exported data pickles
+- MODELS -> Contains the saved models 
+- MusicDemos -> Contains the demos used to test the jupyter notebooks and demo.py
+- GRAPHS -> Contains the returned graphs for your songs
+
