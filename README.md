@@ -22,11 +22,13 @@ Audio feature extraction script for song decomposition
 - Chromagram stft
 - Genre Percentage
 
-## Input A Song And Retrieve All Of It´s Features Hassle Free
+## Input A Song And Retrieve All Of Its Features, Hassle Free
 
 By using Machine Learning (Neural Networks) I was able to decompose a song in order to return the raw features that make up that song as well as the percentages of each genre in that song.
 
 Using Keras and Tensorflow I have trained a model to predict a song´s genre with over a 90% accuracy.
+
+To demo the script, run the Main.py file from the terminal and input the name of the song file you want to decompose (must be a .wav file)
 
 ## Files And Directories In Github Repo
 
